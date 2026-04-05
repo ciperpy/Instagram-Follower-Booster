@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<title>CIPERPY | InstaBoost Real</title>
+                       
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+background:#0b0f1a;
+color:white;
+overflow-x:hidden;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#0f1525;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{font-size:22px;font-weight:700;color:#00ffd5;}
+
+.hero{text-align:center;padding:70px 20px 50px;position:relative;}
+
+.hero h1{font-size:48px;margin-bottom:15px;}
+.hero span{color:#00ffd5;}
+.hero p{opacity:.8;}
+
+/* NEW: Delivery Time Badge */
+.delivery-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #00ffd5, #00a8ff);
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #0b0f1a;
+    box-shadow: 0 0 20px rgba(0,255,213,0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,213,0.7); }
+    70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(0,255,213,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,213,0); }
+}
+
+.delivery-badge i {
+    font-size: 1.2rem;
+}
+
+/* NEW: Limited Time Offer Banner */
+.offer-banner {
+    background: linear-gradient(95deg, #ff416c, #ff4b2b);
+    text-align: center;
+    padding: 12px 20px;
+    margin: 20px 8% 0;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    animation: glowBanner 1.5s infinite alternate;
+}
+
+@keyframes glowBanner {
+    from { box-shadow: 0 0 5px #ff416c; }
+    to { box-shadow: 0 0 20px #ff4b2b; }
+}
+
+.btn{
+margin-top:25px;
+padding:14px 28px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#00ffd5,#007bff);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition: transform 0.2s;
+}
+
+.btn:hover{transform:scale(1.02);}
+
+section{padding:50px 8%;text-align:center;}
+
+h2{margin-bottom:30px;font-size:32px;position:relative;display:inline-block;}
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #00ffd5;
+    border-radius: 2px;
+}
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+}
+
+.card{
+background:#121a2f;
+padding:25px;
+border-radius:15px;
+width:260px;
+transition:.3s;
+cursor:pointer;
+border:1px solid rgba(0,255,213,0.1);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(0,255,213,.3);
+border-color:#00ffd5;
+}
+
+/* Trust Indicators Grid */
+.trust-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0 20px;
+    background: rgba(18,26,47,0.6);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.trust-item i {
+    font-size: 28px;
+    color: #00ffd5;
+}
+
+/* FAQ Styles */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    background: #121a2f;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(0,255,213,0.15);
+    transition: 0.2s;
+}
+
+.faq-question {
+    padding: 18px 22px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f172a;
+    color: #00ffd5;
+}
+
+.faq-question i {
+    transition: 0.2s;
+    font-size: 1.2rem;
+}
+
+.faq-answer {
+    padding: 0 22px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.2s;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 22px 18px 22px;
+    max-height: 200px;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* Review Card Styles */
+.reviews-section {
+    background: transparent;
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.review-card {
+    background: #121a2f;
+    padding: 25px;
+    border-radius: 15px;
+    width: 300px;
+    transition: .3s;
+    text-align: left;
+    border: 1px solid rgba(0,255,213,0.2);
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(0,255,213,.2);
+    border-color: rgba(0,255,213,0.5);
+}
+
+.stars {
+    color: #FFD700;
+    margin-bottom: 12px;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ddd;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.review-author {
+    font-weight: 600;
+    color: #00ffd5;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.review-verified {
+    font-size: 11px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.review-verified:before {
+    content: "✓";
+    color: #00ffd5;
+    font-weight: bold;
+}
+
+.float-container{
+position:fixed;
+right:20px;
+bottom:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+z-index:999;
+}
+
+.float-btn{
+width:55px;height:55px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+background:#121a2f;
+box-shadow:0 0 15px rgba(0,255,213,.5);
+animation:float 3s ease-in-out infinite;
+cursor:pointer;
+transition:0.2s;
+}
+
+.float-btn img{width:28px;}
+.float-btn:hover{transform:scale(1.05);}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+.popup{
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+.popup-content{
+background:#121a2f;
+padding:30px;
+border-radius:15px;
+text-align:center;
+max-width:90%;
+width:380px;
+}
+
+.popup img{width:200px;border-radius:10px;margin-top:15px;}
+
+.close{margin-top:15px;cursor:pointer;color:#00ffd5;font-weight:600;}
+
+/* Refund Policy Box */
+.refund-box {
+    background: rgba(0,255,213,0.1);
+    border-left: 4px solid #00ffd5;
+    padding: 12px 20px;
+    margin: 20px auto;
+    border-radius: 12px;
+    max-width: 600px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+footer{padding:25px;text-align:center;opacity:.7; font-size:0.8rem;}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .hero h1{font-size:36px;}
+    .delivery-badge{font-size:0.75rem; padding:6px 16px;}
+    .trust-item{font-size:0.75rem;}
+    .trust-item i{font-size:22px;}
+    .offer-banner{font-size:0.75rem;}
+    h2{font-size:26px;}
+}
+</style>
+<!-- Font awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+<nav>
+<div class="logo">CIPERPY</div>
+</nav>
+
+<!-- Limited Time Offer Banner (NEW) -->
+<div class="offer-banner">
+    🔥20% OFF on your first order!🔥
+</div>
+
+<div class="hero">
+<h1>InstaBoost <span>Real</span></h1>
+<p>Fast • Trusted • Professional Instagram Growth Service</p>
+
+<!-- Delivery Time Badge (NEW) -->
+<div class="delivery-badge">
+    <i class="fas fa-bolt"></i> ⚡ Instant Delivery | Avg. 15 min ⚡ <i class="fas fa-clock"></i>
+</div>
+
+<button class="btn" onclick="openPayment()">Buy Services</button>
+</div>
+
+<!-- Trust Indicators Section (NEW) -->
+<div style="padding: 0 8% 20px;">
+    <div class="trust-grid">
+        <div class="trust-item"><i class="fas fa-smile-wink"></i> ✅ 500+ Happy Customers</div>
+        <div class="trust-item"><i class="fas fa-chart-line"></i> ✅ 98% Retention Rate (30 days)</div>
+        <div class="trust-item"><i class="fab fa-whatsapp"></i> ✅ 24/7 Customer Support <a href="https://wa.me/919906454782" style="color:#00ffd5; text-decoration:none;">+91 9906454782</a></div>
+    </div>
+</div>
+
+<section>
+<h2>Our Packages</h2>
+<div class="cards">
+    <div class="card" onclick="order('500 Followers','₹199','10-30 mins')">
+        <h3>500 Followers</h3>
+        <p>₹199</p>
+        <p>Delivery: 10-30 mins</p>
+    </div>
+    <div class="card" onclick="order('1000 Followers','₹299','Fast Delivery')">
+        <h3>1000 Followers</h3>
+        <p>₹299</p>
+        <p>Fast Delivery</p>
+    </div>
+    <div class="card" onclick="order('5000 Followers','₹449','High Quality')">
+        <h3>5000 Followers</h3>
+        <p>₹449</p>
+        <p>High Quality</p>
+    </div>
+    <div class="card" onclick="order('10K Followers','₹599','Premium Boost')">
+        <h3>10K Followers</h3>
+        <p>₹599</p>
+        <p>Premium Boost</p>
+    </div>
+    <div class="card" onclick="order('Instagram Likes Boost','Start ₹29','Instant Delivery')">
+        <h3>❤️ Instagram Likes Boost</h3>
+        <p>₹29 per 100 likes</p>
+        <p>Instant Likes Delivery</p>
+    </div>
+    <div class="card" onclick="order('Instagram Comments Boost','Start ₹59','Real Looking Comments')">
+        <h3>💬 Instagram Comments Boost</h3>
+        <p>₹39 per 100 coments</p>
+        <p>Real Looking Comments</p>
+    </div>
+</div>
+</section>
+
+<!-- ========== FAQ SECTION (NEW) ========== -->
+<section style="background: rgba(0,0,0,0.2); border-radius: 30px; margin: 0 8% 30px; padding: 40px 8%;">
+    <h2>❓ Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>⏱️ How long does delivery take?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Delivery takes <strong>within 15 minutes</strong> after payment confirmation. Fastest service in the industry!
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>📉 Will followers drop?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <strong>No!</strong> We provide high-quality real followers with 98% retention rate. No drop guarantee.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>🔒 Is my Instagram safe?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <strong>100% safe, fully guaranteed.</strong> We never ask for your password. Only your Instagram username is needed.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>💰 How to place order?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Click on any package → WhatsApp us → Complete UPI payment → Get followers within 15 minutes!
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Refund Policy Banner (NEW) -->
+<div class="refund-box">
+    <i class="fas fa-shield-alt" style="color:#00ffd5; margin-right: 8px;"></i>
+    <strong>Refund Policy:</strong> If followers drop within 7 days, you get a <strong>full refund</strong>. 100% risk-free!
+</div>
+
+<!-- ========== REVIEWS SECTION ========== -->
+<div class="reviews-section">
+    <h2>⭐ What Our Clients Say ⭐</h2>
+    <div class="reviews-container">
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <div class="review-text">"Absolutely insane growth! Ordered 5000 followers and got them within 30 minutes. All profiles look real with posts and stories. My engagement actually went up. Best decision ever!"</div>
+            <div class="review-author">— Ananya Sharma</div>
+            <div class="review-verified">Verified Buyer • 2 orders</div>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <div class="review-text">"I was skeptical at first but InstaBoost Real delivered exactly what they promised. Got 1000 real followers and the retention is amazing after 2 weeks. Support via Telegram was super responsive."</div>
+            <div class="review-author">— Rohan Mehta</div>
+            <div class="review-verified">Verified Buyer • Business Account</div>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <div class="review-text">"Hands down the best Instagram growth service in India. The QR payment was smooth and I got my 10K followers in just a few hours. My profile looks so credible now. Thank you CIPERPY!"</div>
+            <div class="review-author">— Priya Kapoor</div>
+            <div class="review-verified">Verified Buyer • 3 orders</div>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★½</div>
+            <div class="review-text">"Very professional service. I bought the likes boost and it made my reel go viral! Real-looking accounts, no bots. Will definitely recommend to my friends."</div>
+            <div class="review-author">— Vikram Singh</div>
+            <div class="review-verified">Verified Buyer • Content Creator</div>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <div class="review-text">"Fast delivery, amazing quality, and great customer support. The comments boost gave me authentic-looking comments that helped my engagement skyrocket. 10/10 service!"</div>
+            <div class="review-author">— Sneha Reddy</div>
+            <div class="review-verified">Verified Buyer • Repeat Customer</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+© 2026 IMRAN — made with❤️by CiPeRpY | Real Followers • 24/7 Support • Instant Delivery
+</footer>
+
+<!-- Floating Buttons -->
+<div class="float-container">
+    <a class="float-btn" href="https://wa.me/919797889224" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="whatsapp">
+    </a>
+    <a class="float-btn" href="https://t.me/zyRox_0" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="telegram">
+    </a>
+    <a class="float-btn" href="https://instagram.com/_just_quiet_5" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="instagram">
+    </a>
+    <div class="float-btn" onclick="openPayment()">
+        <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="payment">
+    </div>
+</div>
+
+<!-- Payment Popup -->
+<div class="popup" id="paymentPopup">
+    <div class="popup-content">
+        <h3>Scan & Pay via UPI</h3>
+        <p>After payment send screenshot on Telegram or Instagram.</p>
+        <img src="https://i.postimg.cc/05DBmwHG/Screenshot-20260405-141507-Gallery.jpg" alt="UPI QR Code">
+        <div class="close" onclick="closePayment()">Close</div>
+    </div>
+</div>
+
+<script>
+// Order function
+function order(service, price, delivery) {
+    let message = `Hello, I want to order:%0A%0A${service}%0A${price}%0ADelivery: ${delivery}%0A%0A(20% OFF first order coupon: FIRST20)`;
+    window.open(`https://wa.me/919797889224?text=${message}`, '_blank');
+}
+
+function openPayment() {
+    document.getElementById("paymentPopup").style.display = "flex";
+}
+
+function closePayment() {
+    document.getElementById("paymentPopup").style.display = "none";
+}
+
+// FAQ Accordion functionality
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const parent = question.parentElement;
+        parent.classList.toggle('active');
+    });
+});
+
+// Auto-open first FAQ for demonstration (optional, makes it look neat)
+// Add small animation on trust indicators
+console.log("InstaBoost Real - All new features added: Delivery Badge, Trust Indicators, FAQ, Refund Policy, Offer Banner");
+</script>
+
+<!-- Add WhatsApp support link extra inline for trust -->
+</body>
+</html>
